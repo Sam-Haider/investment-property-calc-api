@@ -4,7 +4,7 @@ const router = express.Router({ mergeParams: true })
 const { addProperty } = require("../handlers/properties")
 
 router
-    .route("/properties")
+    .route("/property")
     .post(addProperty)
 
 module.exports = router
