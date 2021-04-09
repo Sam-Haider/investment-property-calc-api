@@ -2,12 +2,14 @@ const express = require("express")
 const app = express()
 require("dotenv").config()
 const cors = require("cors")
+app.use(cors({ origin: [process.env.CLIENT_ORIGIN, 'http://localhost:3000'] }))
+
 const mongoose = require("mongoose")
 const propertiesRoutes = require("./routes/properties")
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ origin: [process.env.CLIENT_ORIGIN, 'http://localhost:3000'] }))
+
 
 const uri = `mongodb+srv://sam:${process.env.DB_PASSWORD}@cluster1.hyibd.mongodb.net/investmentpropcalcdb?retryWrites=true&w=majority`
 
