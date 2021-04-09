@@ -11,3 +11,12 @@ exports.addProperty = async function (req, res) {
         console.log("Whoops, something went wrong: ", e)
     }
 }
+
+exports.getProperties = async function (req, res) {
+    try {
+        const properties = await db.Property.find()
+        return res.status(200).json(properties)
+    } catch (e) {
+        console.log("Whoops, something went wrong: ", e)
+    }
+}
