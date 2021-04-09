@@ -1,0 +1,19 @@
+{
+  "name": "investmentpropcalcapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaider0/investmentpropcalculatorapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaider0/investmentpropcalculatorapi/issues"
+  },
+  "homepage": "https://github.com/shaider0/investmentpropcalculatorapi#readme"
+}
