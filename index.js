@@ -2,8 +2,8 @@ const express = require("express")
 const app = express()
 require("dotenv").config()
 const cors = require("cors")
-app.use(cors({ origin: [process.env.CLIENT_ORIGIN, 'http://localhost:3000'] }))
-// app.use(cors())
+app.use(cors({ origin: "https://investmentpropcalc.herokuapp.com/" }))
+
 
 const mongoose = require("mongoose")
 const propertiesRoutes = require("./routes/properties")
