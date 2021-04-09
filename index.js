@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 require("dotenv").config()
 const cors = require("cors")
-app.use(cors({ origin: "https://investmentpropcalc.herokuapp.com" }))
+app.use(cors({ origin: [process.env.CLIENT_ORIGIN, "http://localhost:3000"] }))
 
 
 const mongoose = require("mongoose")
