@@ -4,9 +4,13 @@ exports.addProperty = async function (req, res) {
     try {
         const property = await db.Property.create({
             propertyAddress: req.body.propertyAddress,
-            purchasePrice: req.body.purchasePrice
+            purchasePrice: req.body.purchasePrice,
+            downPayment: req.body.downPayment,
+            interestRate: req.body.interestRate,
+            loanTerm: req.body.loanTerm,
+            rentalIncome: req.body.rentalIncome,
+            expenses: req.body.expenses,
         })
-        console.log("property added ,", property)
         return res.status(200).json(property)
     } catch (e) {
         console.log("Whoops, something went wrong: ", e)
