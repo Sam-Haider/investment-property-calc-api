@@ -2,8 +2,12 @@ const mongoose = require("mongoose")
 
 const propertySchema = new mongoose.Schema(
     {
-        purchasePrice: {
+        propertyAddress: {
             type: String,
+            required: true
+        },
+        purchasePrice: {
+            type: Number,
             required: true
         }
     }

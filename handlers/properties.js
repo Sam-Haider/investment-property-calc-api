@@ -3,6 +3,7 @@ const db = require("../models")
 exports.addProperty = async function (req, res) {
     try {
         const property = await db.Property.create({
+            propertyAddress: req.body.propertyAddress,
             purchasePrice: req.body.purchasePrice
         })
         console.log("property added ,", property)
