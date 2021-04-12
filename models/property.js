@@ -30,6 +30,19 @@ const propertySchema = new mongoose.Schema(
             type: Number,
             required: true
         },
+        mortgagePayment: {
+            type: Number,
+            required: true
+        },
+        cashFlow: {
+            type: Number,
+            required: true
+        },
+        cocReturn: {
+            type: Number,
+            required: true
+        }
+
     }
 )
 
