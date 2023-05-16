@@ -17,7 +17,6 @@ exports.addProperty = async function (req, res) {
       return payment;
     };
     const mortgagePayment = calculateMonthlyPayment(mortgage);
-    console.log("mortg", mortgagePayment);
     const cashFlow =
       parseInt(req.body.rentalIncome) -
       mortgagePayment -
@@ -37,17 +36,59 @@ exports.addProperty = async function (req, res) {
       cashFlow,
       cocReturn,
     });
+
     return res.status(200).json(property);
   } catch (e) {
     console.log("Whoops, something went wrong: ", e);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+exports.updateProperty = async function (req, res) {
+  try {
+    const propertyId = req.params.id;
+    const updates = {
+      purchasePrice: req.body.purchasePrice,
+      downPayment: req.body.downPayment,
+      interestRate: req.body.interestRate,
+      loanTerm: req.body.loanTerm,
+      rentalIncome: req.body.rentalIncome,
+      expenses: req.body.expenses,
+    };
+
+    const updatedProperty = await db.Property.findByIdAndUpdate(
+      propertyId,
+      updates,
+      { new: true }
+    );
+
+    return res.status(200).json(updatedProperty);
+  } catch (e) {
+    console.log("Whoops, something went wrong: ", e);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+exports.deleteProperty = async function (req, res) {
+  try {
+    const propertyId = req.params.id;
+
+    await db.Property.findByIdAndRemove(propertyId);
+
+    return res.status(200).json({ message: "Property deleted successfully" });
+  } catch (e) {
+    console.log("Whoops, something went wrong: ", e);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
 exports.getProperties = async function (req, res) {
   try {
     const properties = await db.Property.find().sort({ createdAt: -1 });
+
     return res.status(200).json(properties);
   } catch (e) {
     console.log("Whoops, something went wrong: ", e);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
