@@ -64,6 +64,36 @@ exports.updateProperty = async function (req, res) {
       { new: true }
     );
 
+    const mortgage = {
+      loan: parseInt(
+        updatedProperty.purchasePrice - updatedProperty.downPayment
+      ),
+      interest: parseInt(updatedProperty.interestRate),
+      term: parseInt(updatedProperty.loanTerm),
+    };
+    const calculateMonthlyPayment = ({ loan, interest, term }) => {
+      const monthlyInterest = (interest * 0.01) / 12;
+      const termInMonths = term * 12;
+      const r = 1 / (1 + monthlyInterest);
+      const payment = Math.round(
+        loan * ((1 - r) / (r - Math.pow(r, termInMonths + 1)))
+      );
+      return payment;
+    };
+    const mortgagePayment = calculateMonthlyPayment(mortgage);
+    const cashFlow =
+      parseInt(updatedProperty.rentalIncome) -
+      mortgagePayment -
+      parseInt(updatedProperty.expenses);
+    const cocReturn =
+      ((cashFlow * 12) / parseInt(updatedProperty.downPayment)).toFixed(2) *
+      100;
+
+    updatedProperty.mortgagePayment = mortgagePayment;
+    updatedProperty.cashFlow = cashFlow;
+    updatedProperty.cocReturn = cocReturn;
+    await updatedProperty.save();
+
     return res.status(200).json(updatedProperty);
   } catch (e) {
     console.log("Whoops, something went wrong: ", e);
