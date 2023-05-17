@@ -1,4 +1,4 @@
-This is the API for investment-prop-calc. This RESTful API handles CRUD operations for as follows:
+This is the API for investment-property-calc. This RESTful API handles CRUD operations for as follows:
 
 POST /properties
 GET /properties
