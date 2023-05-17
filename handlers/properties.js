@@ -32,6 +32,7 @@ exports.addProperty = async function (req, res) {
       loanTerm: req.body.loanTerm,
       rentalIncome: req.body.rentalIncome,
       expenses: req.body.expenses,
+      imagePath: req.body.imagePath,
       mortgagePayment,
       cashFlow,
       cocReturn,
