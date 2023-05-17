@@ -48,6 +48,7 @@ exports.updateProperty = async function (req, res) {
   try {
     const propertyId = req.params.id;
     const updates = {
+      propertyAddress: req.body.propertyAddress,
       purchasePrice: req.body.purchasePrice,
       downPayment: req.body.downPayment,
       interestRate: req.body.interestRate,

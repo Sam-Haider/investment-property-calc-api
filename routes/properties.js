@@ -9,6 +9,6 @@ const {
 } = require("../handlers/properties");
 
 router.route("/properties").post(addProperty).get(getProperties);
-router.route("/properties/:id").patch(updateProperty).delete(deleteProperty);
+router.route("/property/:id").patch(updateProperty).delete(deleteProperty);
 
 module.exports = router;
