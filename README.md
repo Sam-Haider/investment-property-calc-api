@@ -1,11 +1,15 @@
-Deployed Client App: https://investmentpropcalc.herokuapp.com/
+This is the API for investment-prop-calc. This RESTful API handles CRUD operations for as follows:
 
-Front-End Repo: https://github.com/shaider0/investmentpropcalculator
+POST /properties
+GET /properties
+PATCH /property/:id
+DELETE /property/:id
 
-Back-End Repo: https://github.com/shaider0/investmentpropcalculatorapi
+The production client application can be found at https://main--investment-property-calc.netlify.app/
 
-This app serves as a mortgage payment calculator and return calculator on rental properties. By entering in a few data points on a property, including purchase price, interest rate, loan term, and monthly expenses, the calculator will calculate the monthly mortgage payment, total monthly expenses, monthly cash flow, and cash on cash return, a commonly used metric for rental property investment. 
+For each property, the API performs and returns various calculations based on data provided by the client, including:
 
-The UI was built using react, and minor styling was applied using CSS. The back end uses mongoDB as the database with Mongoose as the ODM, and Express as the server framework. 
-
-The app uses CSS grid to achieve a balanced layout with responsive design. 
+-mortgage payments
+-total monthly expenses
+-monthly cash flow
+-cash on cash return
